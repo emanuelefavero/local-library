@@ -1,0 +1,20 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+
+<ul>
+  <!-- IF genre_list HAS genres: -->
+  <% if (genre_list) { %>
+  <!-- LOOP thru each author -->
+  <% genre_list.forEach(genre => { %>
+  <li>
+    <a href="<%= genre.url %>"><%= genre.name %> </a>
+  </li>
+  <% }) %> <% } else { %>
+  <p>There are no genres</p>
+  <% } %>
+</ul>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

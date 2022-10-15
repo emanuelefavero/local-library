@@ -1,0 +1,40 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<h1>Author Form</h1>
+
+<form action="" method="post">
+  <div class="form-group">
+    <label for="first_name">First Name: </label>
+    <input id="first_name" class="form-control" type="text" placeholder='First
+    name (Chris)' name='first_name' required='true' value='<%= undefined ===
+    author ? '' : author.first_name %>'>
+    <label for="family_name">Family Name: </label>
+    <input id="family_name" class="form-control" type="text" placeholder='Family
+    name (Surname)' name='family_name' required='true' value='<%= undefined ===
+    author ? '' : author.family_name %>'>
+  </div>
+  <div class="form-group">
+    <label for="date_of_birth">Date of Birth: </label>
+    <input id="date_of_birth" class="form-control" type="date"
+    placeholder='dd/mm/yyyy' name='date_of_birth' value='<%= undefined ===
+    author ? '' : author.date_of_birth %>'>
+    <label for="date_of_death">Date of Death: </label>
+    <input id="date_of_death" class="form-control" type="date"
+    placeholder='dd/mm/yyyy' name='date_of_death' value='<%= undefined ===
+    author ? '' : author.date_of_death %>'>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+  <% if (errors) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</form>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

@@ -1,0 +1,95 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<!-- TODO: Check if the following code is correct by visiting: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Create_BookInstance_form  -->
+<h1>Book Instance Form</h1>
+
+<form method="post" action="">
+  <div class="form-group">
+    <label for="book">Book: </label>
+    <select
+      id="book"
+      class="form-control"
+      type="select"
+      placeholder="Select book"
+      name="book"
+      required="true"
+    >
+      <% books.sort(function(a, b) { %> <% let textA = a.title.toUpperCase() %>
+      <% let textB = b.title.toUpperCase() %> <% return (textA < textB) ? -1 :
+      (textA > textB) ? 1 : 0 %> <% }) %> <% books.forEach(book => { %> <% if
+      (bookinstance) { %>
+      <option
+        value="<%= book._id %>"
+        selected="<%= (book._id.toString() === bookinstance.book._id.toString() ? 'selected' : false) %>"
+      >
+        <%= book.title %>
+      </option>
+      <% } else { %>
+      <option value="<%= book._id %>"><%= book.title %></option>
+      <% } %> <% }) %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="imprint">Imprint: </label>
+    <input id="imprint" class="form-control" type="text" placeholder='Imprint'
+    name='imprint' required='true' value='<%= undefined === bookinstance ? '' :
+    bookinstance.imprint %>'>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status: </label>
+    <select
+      id="status"
+      class="form-control"
+      type="select"
+      placeholder="Select status"
+      name="status"
+      required="true"
+    >
+      <% if (bookinstance) { %>
+      <option
+        value="Available"
+        selected="<%= (bookinstance.status === 'Available' ? 'selected' : false) %>"
+      >
+        Available
+      </option>
+      <option
+        value="Maintenance"
+        selected="<%= (bookinstance.status === 'Maintenance' ? 'selected' : false) %>"
+      >
+        Maintenance
+      </option>
+      <option
+        value="Loaned"
+        selected="<%= (bookinstance.status === 'Loaned' ? 'selected' : false) %>"
+      >
+        Loaned
+      </option>
+      <option
+        value="Reserved"
+        selected="<%= (bookinstance.status === 'Reserved' ? 'selected' : false) %>"
+      >
+        Reserved
+      </option>
+      <% } else { %>
+      <option value="Available">Available</option>
+      <option value="Maintenance">Maintenance</option>
+      <option value="Loaned">Loaned</option>
+      <option value="Reserved">Reserved</option>
+      <% } %>
+    </select>
+  </div>
+  <% if (errors) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</form>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

@@ -1,0 +1,25 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<h1><%= title %></h1>
+
+<ul>
+
+  <!-- IF book_list HAS books: -->
+  <% if (book_list) { %>
+    <!-- LOOP thru each book -->
+    <% book_list.forEach(book => { %>
+      <li>
+        <a href="<%= book.url %>"><%= book.title %> </a>
+        (<%= book.author.name %>)
+      </li>
+      <% }) %>
+      <% } else { %>
+        <p>There are no books</p>
+  <% } %>
+
+</ul>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

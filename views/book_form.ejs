@@ -1,0 +1,97 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<h1>Author Form</h1>
+
+<form method="post" action="">
+  <div class="form-group">
+    <label for="title">Title: </label>
+    <input id="title" class="form-control" type="text" placeholder='Name of
+    book' name='title' required='true' value='<%= undefined === book ? '' :
+    book.title %>'>
+  </div>
+  <div class="form-group">
+    <label for="author">Author: </label>
+    <select
+      id="author"
+      class="form-control"
+      type="select"
+      placeholder="Select author"
+      name="author"
+      required="true"
+    >
+      - <% authors.sort(function(a, b) { %> <% let textA =
+      a.family_name.toUpperCase() %> <% let textB = b.family_name.toUpperCase()
+      %> <% return (textA < textB) ? -1 : (textA > textB) ? 1 : 0 %> <% }) %>
+
+      <!-- TODO: Check: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms/Update_Book_form -->
+      <% authors.forEach(author => { %> <% if (book) { %>
+      <option
+        value="<%= author._id %>"
+        selected="<%= ((author._id.toString() === book.author._id || author._id.toString()==book.author)  ? 'selected' : false) %>"
+      >
+        <%= author.name %>
+      </option>
+      <% } else { %>
+      <option value="<%= author._id %>"><%= author.name %></option>
+      <% } %> <% }) %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="summary">Summary: </label>
+    <textarea
+      id="summary"
+      class="form-control"
+      type="textarea"
+      placeholder="Summary"
+      name="summary"
+      required="true"
+    >
+<%= undefined === book ? '' : book.summary %></textarea
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="isbn">ISBN: </label>
+    <input id="isbn" class="form-control" type="text" placeholder='ISBN'
+    name='isbn' required='true' value='<%= undefined === book ? '' : book.isbn
+    %>'>
+  </div>
+
+  <div class="form-group">
+    <label for="genre">Genre: </label>
+    <select
+      id="genre"
+      class="form-control"
+      type="select"
+      placeholder="Select genre"
+      name="genre"
+      required="true"
+    >
+      <% genres.forEach(genre => { %> <% if (book) { %>
+      <option
+        value="<%= genre._id %>"
+        selected="<%= (genre._id.toString() === book.genre._id.toString() ? 'selected' : false) %>"
+      >
+        <%= genre.name %>
+      </option>
+      <% } else { %>
+      <option value="<%= genre._id %>"><%= genre.name %></option>
+      <% } %> <% }) %>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+  <% if (errors) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</form>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

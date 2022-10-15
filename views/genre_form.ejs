@@ -1,0 +1,25 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<h1>Genre Form</h1>
+
+<form action="" method="post">
+  <div class="form-group">
+    <label for="name">Genre: </label>
+    <input id="name" class="form-control" type="text" placeholder='Fantasy,
+    Poetry etc.' name='name' value='<%= undefined === genre ? '' : genre.name
+    %>' required='true'>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+  <% if (errors) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</form>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>
