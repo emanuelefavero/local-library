@@ -1,0 +1,22 @@
+<!-- HEADER -->
+<%- include('./partials/header.ejs') %>
+
+<!-- BLOCK CONTENT -->
+<p>Do you really want to delete "<%= book.title %>" Book?</p>
+
+<form action="" method="post">
+  <div class="form-group">
+    <input
+      type="hidden"
+      name="bookid"
+      id="bookid"
+      class="form-control"
+      required="true"
+      value="<%= book._id %>"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit">Delete</button>
+</form>
+
+<!-- FOOTER -->
+<%- include('./partials/footer.ejs') %>

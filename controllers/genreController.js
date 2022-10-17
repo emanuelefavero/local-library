@@ -119,7 +119,6 @@ exports.genre_create_post = [
   },
 ]
 
-// TODO: Implement the delete/update get and post pages, check: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
 // Check the end of the mdn webpage
 // Display Genre delete form on GET.
 exports.genre_delete_get = (req, res) => {

@@ -202,16 +202,56 @@ exports.book_create_post = [
   },
 ]
 
-// TODO: Implement the delete get and post pages, check: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
 // Check the end of the mdn webpage
-// Display book delete form on GET.
-exports.book_delete_get = (req, res) => {
-  res.send('NOT IMPLEMENTED: Book delete GET')
+// Display Book delete form on GET.
+exports.book_delete_get = (req, res, next) => {
+  const id = mongoose.Types.ObjectId(req.params.id)
+  async.parallel(
+    {
+      book(callback) {
+        Book.findById(id).exec(callback)
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err)
+      }
+      if (results.book == null) {
+        // No results.
+        res.redirect('/catalog/books')
+      }
+      // Successful, so render.
+      res.render('book_delete', {
+        title: 'Delete Book',
+        book: results.book,
+      })
+    }
+  )
 }
 
-// Handle book delete on POST.
-exports.book_delete_post = (req, res) => {
-  res.send('NOT IMPLEMENTED: Book delete POST')
+// Handle Book delete on POST.
+exports.book_delete_post = (req, res, next) => {
+  async.parallel(
+    {
+      book(callback) {
+        Book.findById(req.body.bookid).exec(callback)
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err)
+      }
+      // Success
+      // Delete object and redirect to the list of books.
+      Book.findByIdAndRemove(req.body.bookid, (err) => {
+        if (err) {
+          return next(err)
+        }
+        // Success - go to author list
+        res.redirect('/catalog/books')
+      })
+    }
+  )
 }
 
 // Display book update form on GET.
