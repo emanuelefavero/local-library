@@ -16,19 +16,11 @@
       name="book"
       required="true"
     >
-      <% books.sort(function(a, b) { %> <% let textA = a.title.toUpperCase() %>
-      <% let textB = b.title.toUpperCase() %> <% return (textA < textB) ? -1 :
-      (textA > textB) ? 1 : 0 %> <% }) %> <% books.forEach(book => { %> <% if
-      (bookinstance) { %>
-      <option
-        value="<%= book._id %>"
-        selected="<%= (book._id.toString() === bookinstance.book._id.toString() ? 'selected' : false) %>"
-      >
-        <%= book.title %>
-      </option>
-      <% } else { %>
+      <% book_list.sort(function(a, b) { %> <% let textA = a.title.toUpperCase()
+      %> <% let textB = b.title.toUpperCase() %> <% return (textA < textB) ? -1
+      : (textA > textB) ? 1 : 0 %> <% }) %> <% book_list.forEach(book => { %>
       <option value="<%= book._id %>"><%= book.title %></option>
-      <% } %> <% }) %>
+      <% }) %>
     </select>
   </div>
 
@@ -82,6 +74,9 @@
       <% } %>
     </select>
   </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+
   <% if (errors) { %>
   <ul>
     <% errors.forEach(error => { %>

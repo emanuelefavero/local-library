@@ -53,6 +53,10 @@ exports.bookinstance_create_get = (req, res, next) => {
     res.render('bookinstance_form', {
       title: 'Create BookInstance',
       book_list: books,
+
+      selected_book: req.body.book,
+      bookinstance: req.body,
+      errors: [],
     })
   })
 }

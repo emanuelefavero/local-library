@@ -103,6 +103,12 @@ exports.book_create_get = (req, res, next) => {
         title: 'Create Book',
         authors: results.authors,
         genres: results.genres,
+        book: {},
+
+        author: req.body.author,
+        summary: req.body.summary,
+        isbn: req.body.isbn,
+        genre: req.body.genre,
       })
     }
   )
