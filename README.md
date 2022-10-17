@@ -31,8 +31,10 @@ Some Available URLs:
 ### Development testing
 
 ```bash
+npm i nodemon -g
 npm run devstart
 OR
+npm i nodemon -g
 npm run serverstart
 
 // Windows
