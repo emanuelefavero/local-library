@@ -10,6 +10,10 @@ Learn More about MVC: [https://developer.mozilla.org/en-US/docs/Glossary/MVC](ht
 
 [https://different-undershirt-bull.cyclic.app/](https://different-undershirt-bull.cyclic.app/)
 
+#### Screenshot
+
+<img src="screenshot.png" width="300" height="646" />
+
 ## Test the app locally
 
 - Create a `.env` file in the root directory and add the following:
