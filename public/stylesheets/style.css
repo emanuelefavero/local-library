@@ -40,6 +40,30 @@ p {
   font-size: 1.1rem;
 }
 
+li {
+  margin-top: 0.2rem;
+}
+
+label {
+  margin-bottom: 0.2rem;
+}
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  margin-bottom: 0.5rem;
+}
+
+select {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-top: 0.3rem;
+}
+
 a {
   color: rgb(64, 101, 196);
   text-decoration: none;
@@ -47,6 +71,11 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.sidebar-container {
+  margin-bottom: 1rem;
+  padding-right: 0.5rem;
 }
 
 .sidebar-nav a {
@@ -69,5 +98,12 @@ a:hover {
   font-size: 1rem;
   font-weight: 400;
   text-transform: uppercase;
+  color: #656567;
+}
+
+footer p {
+  padding-top: 2rem;
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
   color: #656567;
 }
