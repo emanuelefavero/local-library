@@ -6,14 +6,37 @@ _NOTE: MVC is a software design pattern that separates the application into thre
 
 Learn More about MVC: [https://developer.mozilla.org/en-US/docs/Glossary/MVC](https://developer.mozilla.org/en-US/docs/Glossary/MVC)
 
-## Installation
+## Live Demo
 
-1. Install [Node.js](https://nodejs.org/en/download/).
-2. Install [MongoDB](https://docs.mongodb.com/manual/installation/).
-3. Clone this repository.
-4. Install the dependencies: `npm install`
-5. Start the server: `npm start`
-6. View the site at: `http://localhost:3000`
+[https://different-undershirt-bull.cyclic.app/](https://different-undershirt-bull.cyclic.app/)
+
+## Test the app locally
+
+- Create a `.env` file in the root directory and add the following:
+
+```env
+NODE_ENV=development
+MONGO_URI=YOUR_MONGO_URI
+```
+
+> Note: Set NODE_ENV to 'production' when deploying to production
+
+- Run the app:
+
+```bash
+npm i
+npm i nodemon -g
+npm run devstart
+OR
+npm i
+npm i nodemon -g
+npm run serverstart
+
+// Windows
+SET DEBUG=express-locallibrary-tutorial:* & npm run devstart
+```
+
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Usage
 
@@ -27,22 +50,3 @@ Some Available URLs:
 - `http://localhost:3000/catalog/genres`
 - `http://localhost:3000/catalog/book/ID`
 - `http://localhost:3000/catalog/book/create`
-
-### Development testing
-
-```bash
-npm i nodemon -g
-npm run devstart
-OR
-npm i nodemon -g
-npm run serverstart
-
-// Windows
-SET DEBUG=express-locallibrary-tutorial:* & npm run devstart
-```
-
-_NOTE: Remember to set NODE_ENV to `development` and MONGO_URI in your environment variables. (Set NODE_ENV to 'production' when deploying to production.)_
-
-## Live Website
-
-[Cyclic App](https://different-undershirt-bull.cyclic.app/)
