@@ -54,3 +54,7 @@ Some Available URLs:
 - `http://localhost:3000/catalog/genres`
 - `http://localhost:3000/catalog/book/ID`
 - `http://localhost:3000/catalog/book/create`
+
+## License
+
+- [MIT](LICENSE.md)
